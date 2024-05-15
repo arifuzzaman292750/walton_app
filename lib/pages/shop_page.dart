@@ -30,6 +30,8 @@ class _ShopPageState extends State<ShopPage> {
           ),
         ),
 
+        SizedBox(height: 25,),
+
         // message
 
         // hot pics
