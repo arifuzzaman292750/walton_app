@@ -30,7 +30,7 @@ class _ShopPageState extends State<ShopPage> {
           ),
         ),
 
-        SizedBox(height: 40,),
+        SizedBox(height: 50,),
 
         // message
 
