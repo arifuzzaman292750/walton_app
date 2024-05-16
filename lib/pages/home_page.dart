@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.only(left: 12.0),
                 child: Icon(
                   Icons.menu,
-                  color: Colors.white,
+                  color: Colors.blue[200],
                 ),
               ),
               onPressed: (){
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                Padding(
                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
                  child: Divider(
-                   color: Colors.white,
+                   color: Colors.blue[200],
                  ),
                ),
 
@@ -84,11 +84,11 @@ class _HomePageState extends State<HomePage> {
                  child: ListTile(
                    leading: Icon(
                      Icons.home,
-                     color: Colors.white,
+                     color: Colors.blue[200],
                    ),
                    title: Text(
                      'Home',
-                     style: TextStyle(color: Colors.white),
+                     style: TextStyle(color: Colors.blue[200],),
                    ),
                  ),
                ),
@@ -97,11 +97,11 @@ class _HomePageState extends State<HomePage> {
                  child: ListTile(
                    leading: Icon(
                      Icons.info,
-                     color: Colors.white,
+                     color: Colors.blue[200],
                    ),
                    title: Text(
                      'About',
-                     style: TextStyle(color: Colors.white),
+                     style: TextStyle(color: Colors.blue[200],),
                    ),
                  ),
                ),
@@ -112,11 +112,11 @@ class _HomePageState extends State<HomePage> {
               child: ListTile(
                 leading: Icon(
                   Icons.logout,
-                  color: Colors.white,
+                  color: Colors.blue[200],
                 ),
                 title: Text(
                   'Logout',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.blue[200],),
                 ),
               ),
             ),
