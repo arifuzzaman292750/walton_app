@@ -4,7 +4,8 @@ import 'package:walton_shop/models/product.dart';
 class ProductTile extends StatelessWidget {
 
   Product product;
-  ProductTile({super.key, required this.product});
+  void Function()? onTap;
+  ProductTile({super.key, required this.product, required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,12 @@ class ProductTile extends StatelessWidget {
           ),
 
           // description
-          Text(
-            product.description,
-            style: TextStyle(color: Colors.blue[500],),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Text(
+              product.description,
+              style: TextStyle(color: Colors.blue[500],),
+            ),
           ),
 
           // price + details
@@ -57,16 +61,19 @@ class ProductTile extends StatelessWidget {
                 ),
 
                 // plus button
-                Container(
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.blue[200],
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    padding: EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.blue[200],
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12),
+                      ),
                     ),
+                      child: Icon(Icons.add, color: Colors.blue[900],),
                   ),
-                    child: Icon(Icons.add, color: Colors.blue[900],),
                 ),
               ],
             ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:walton_shop/models/product.dart';
 
 import '../components/product_tile.dart';
+import '../models/cart.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -11,9 +13,24 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+
+  // add product to cart
+  void addProductToCart (Product product){
+    Provider.of<Cart>(context, listen: false).addItemToCart(product);
+
+    // alert the user, product successfully added
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Successfully added!'),
+          content: Text('Check your cart'),
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Consumer<Cart>(builder: (context, value, child) => Column(
       children: [
 
         // search bar
@@ -40,7 +57,7 @@ class _ShopPageState extends State<ShopPage> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 25.0),
           child: Text(
-              'everyone flies... some fly longer than others',
+            'everyone flies... some fly longer than others',
             style: TextStyle(color: Colors.blue[200],),
           ),
         ),
@@ -55,8 +72,8 @@ class _ShopPageState extends State<ShopPage> {
               Text(
                 'Hot pic 🔥',
                 style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                   color: Colors.red[200],
                 ),
               ),
@@ -73,21 +90,20 @@ class _ShopPageState extends State<ShopPage> {
 
         SizedBox(height: 5,),
 
+        // list of product for sale
         Expanded(
           child: ListView.builder(
             itemCount: 4,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index){
 
-              // create a product
-              Product product = Product(
-                name: 'Freeze',
-                price: '48,000.00',
-                imagePath: 'lib/images/freeze.png',
-                description: 'Bigger than your expectation',
-              );
+              // get a product from shop list
+              Product product = value.getProductList()[index];
+
+              // return the product
               return ProductTile(
                 product: product,
+                onTap: () => addProductToCart(product),
               );
             },
           ),
@@ -100,6 +116,7 @@ class _ShopPageState extends State<ShopPage> {
           ),
         ),
       ],
+    ),
     );
   }
 }
